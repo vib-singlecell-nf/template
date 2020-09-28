@@ -6,6 +6,7 @@ process SC__TEMPLATE__PROCESS1 {
 
     container params.sc.template.container
     publishDir "${params.global.outdir}/data/intermediate", mode: 'symlink'
+    label 'compute_resources__default'
 
     input:
         tuple val(sampleId), path(f)
@@ -20,6 +21,8 @@ process SC__TEMPLATE__PROCESS1 {
         """
         ${binDir}process1.py \
             --input ${f} \
+            --n_workers ${task.cpus} \
+            --memory_limit ${task.memory.toGiga()} \
             --output ${sampleId}.SC__TEMPLATE__PROCESS1.h5ad
         """
 }
