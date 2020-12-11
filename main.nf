@@ -22,5 +22,7 @@ workflow template {
 
         SC__TEMPLATE__PROCESS1(data)
 
+    emit:
+        SC__TEMPLATE__PROCESS1.out
 }
 
