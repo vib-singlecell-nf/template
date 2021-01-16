@@ -1,4 +1,4 @@
-nextflow.preview.dsl=2
+nextflow.enable.dsl=2
 
 binDir = !params.containsKey("test") ? "${workflow.projectDir}/src/template/bin/" : ""
 
@@ -16,7 +16,7 @@ process SC__TEMPLATE__PROCESS1 {
 
     script:
         def sampleParams = params.parseConfig(sampleId, params.global, params.sc.template)
-		processParams = sampleParams.local
+        processParams = sampleParams.local
         //varsUseAsArguments = processParams.varsUse.collect({ '--vars-use' + ' ' + it }).join(' ')
         """
         ${binDir}process1.py \
